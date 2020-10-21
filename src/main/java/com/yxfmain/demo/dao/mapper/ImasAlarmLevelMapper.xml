@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxfmain.demo.dao.ImasAlarmLevelMapper">
+  <resultMap id="BaseResultMap" type="com.yxfmain.demo.dao.entity.ImasAlarmLevel">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="level_name" jdbcType="VARCHAR" property="levelName" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="data_type" jdbcType="INTEGER" property="dataType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, level_name, sort, data_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from imas_alarm_level
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from imas_alarm_level
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yxfmain.demo.dao.entity.ImasAlarmLevel">
+    insert into imas_alarm_level (id, level_name, sort, 
+      data_type)
+    values (#{id,jdbcType=INTEGER}, #{levelName,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{dataType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yxfmain.demo.dao.entity.ImasAlarmLevel">
+    insert into imas_alarm_level
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="levelName != null">
+        level_name,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="dataType != null">
+        data_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="levelName != null">
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="dataType != null">
+        #{dataType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yxfmain.demo.dao.entity.ImasAlarmLevel">
+    update imas_alarm_level
+    <set>
+      <if test="levelName != null">
+        level_name = #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="dataType != null">
+        data_type = #{dataType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yxfmain.demo.dao.entity.ImasAlarmLevel">
+    update imas_alarm_level
+    set level_name = #{levelName,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      data_type = #{dataType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

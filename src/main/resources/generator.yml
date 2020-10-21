@@ -1,0 +1,6 @@
+driverLocation: D:\\Program Files (x86)\\.m2\\org\\postgresql\\postgresql\\42.2.16\\postgresql-42.2.16.jar
+driverClass: org.postgresql.Driver
+connectionURL: jdbc:postgresql://localhost:5432/imas41
+userId: postgres
+password: ROOT
+tableName: imas_alarm_level
